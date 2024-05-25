@@ -11,6 +11,13 @@ for (let inputBtn of inputBtns) {
     if (value == "=") {
       let result = eval(input);
       resultDisplay.textContent = result;
+    } else if (value == "AC") {
+      input = "";
+      resultDisplay.textContent = "";
+      calcToDisplay.textContent = "";
+    } else if (value == "del") {
+      input = input.slice(0, -1);
+      calcToDisplay.textContent = input;
     } else {
       input += value;
       calcToDisplay.textContent = input;
