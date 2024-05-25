@@ -18,9 +18,25 @@ for (let inputBtn of inputBtns) {
     } else if (value == "del") {
       input = input.slice(0, -1);
       calcToDisplay.textContent = input;
+    } else if (inputBtn.classList.contains("operator")) {
+      const lastInput = input[input.length - 1];
+
+      if (lastInput !== undefined) {
+        if (isOperator(lastInput)) {
+          input = input.slice(0, -1) + value;
+          calcToDisplay.textContent = input;
+        } else {
+          input += value;
+          calcToDisplay.textContent = input;
+        }
+      }
     } else {
       input += value;
       calcToDisplay.textContent = input;
     }
   });
+}
+
+function isOperator(value) {
+  return ["+", "-", "*", "/", "%"].includes(value);
 }
