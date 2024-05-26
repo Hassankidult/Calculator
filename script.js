@@ -30,6 +30,13 @@ for (let inputBtn of inputBtns) {
           calcToDisplay.textContent = input;
         }
       }
+    } else if (value == ".") {
+      const lastNumber = getLastNumber(input);
+
+      if (lastNumber.indexOf(".") === -1) {
+        input += value;
+        calcToDisplay.textContent = input;
+      }
     } else {
       input += value;
       calcToDisplay.textContent = input;
@@ -39,4 +46,9 @@ for (let inputBtn of inputBtns) {
 
 function isOperator(value) {
   return ["+", "-", "*", "/", "%"].includes(value);
+}
+
+function getLastNumber(inputString) {
+  const splitInput = inputString.split(/[-+*/%]/);
+  return splitInput[splitInput.length - 1];
 }
